@@ -11,7 +11,7 @@ import reactor.core.publisher.Mono;
 @Component
 public class Webclients
 {
-    String endpointCustomerP = "http://localhost:8081/";
+    String endpointCustomerP = "http://localhost:8090/";
     String pathSendAccount = "account/p-customer/";
 
     private final WebClient client;
@@ -26,6 +26,14 @@ public class Webclients
                 .retrieve()
                 .onStatus(HttpStatus.NOT_FOUND::equals,
                             clientResponse -> Mono.empty())
+                .bodyToMono(ResponseAccountClient.class);
+    }
+
+    public Mono<ResponseAccountClient> getAccountClient(String accountNumber){
+        return this.client.get().uri(pathSendAccount.concat(accountNumber))
+                .retrieve()
+                .onStatus(HttpStatus.NOT_FOUND::equals,
+                        clientResponse -> Mono.empty())
                 .bodyToMono(ResponseAccountClient.class);
     }
 }

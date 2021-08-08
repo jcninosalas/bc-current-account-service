@@ -4,11 +4,16 @@ import com.everis.currentaccountservice.bean.AccountClientBean;
 import com.everis.currentaccountservice.bean.ResponseAccountClient;
 import com.everis.currentaccountservice.repository.CurrentAccountRepository;
 import com.everis.currentaccountservice.utils.Webclients;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
+import java.time.Duration;
+import java.time.temporal.ChronoUnit;
+
 @Service
+@Slf4j
 public class AccountClientService
 {
     @Autowired
@@ -27,5 +32,15 @@ public class AccountClientService
 
                     return webclients.sendClientAccount(clientBean, documentNumber);
                 });
+    }
+
+    public ResponseAccountClient getObjectToMono(String accountNumber){
+        return webclients.getAccountClient(accountNumber)
+                .map(responseAccountClient -> {
+                    log.info("Obteniendo Objeto : {}", responseAccountClient);
+
+                    return responseAccountClient;
+                })
+                .block(Duration.of(1000, ChronoUnit.MILLIS));
     }
 }

@@ -28,7 +28,7 @@ public class AccountClientService
                     AccountClientBean clientBean =
                             new AccountClientBean(currentAccount.getId(),
                                     currentAccount.getAccountNumber(),
-                                    "Current");
+                                    "Current", currentAccount.getAccountBalance());
 
                     return webclients.sendClientAccount(clientBean, documentNumber);
                 });

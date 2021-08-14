@@ -12,7 +12,7 @@ import reactor.core.publisher.Mono;
 public class Webclients
 {
     String endpointCustomerP = "http://localhost:8090/";
-    String pathSendAccount = "account/p-customer/";
+    String pathSendAccount = "personals-customers/accounts/";
 
     private final WebClient client;
 

@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: personal-current-account-service
+
+  cloud:
+    config:
+      uri: ${CONFIG_URI}
+      username: ${SECURITY_USERNAME}
+      password: ${SECURITY_PASSWORD}

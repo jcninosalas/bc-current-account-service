@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.http.HttpStatus;
 
 import java.util.Map;
 
@@ -14,6 +15,6 @@ import java.util.Map;
 public class ResponseAccountClient
 {
     private String message;
-    private String status;
+    private HttpStatus status;
     private Map<String, Object> body;
 }

@@ -1,10 +1,8 @@
-package com.everis.currentaccountservice.repository;
+package com.everis.currentaccountservice.domain.repository;
 
-import com.everis.currentaccountservice.model.CurrentAccount;
+import com.everis.currentaccountservice.domain.model.CurrentAccount;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 import reactor.core.publisher.Mono;
-
-import java.util.Optional;
 
 public interface CurrentAccountRepository extends ReactiveMongoRepository<CurrentAccount, String> {
 
